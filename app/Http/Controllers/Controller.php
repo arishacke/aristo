@@ -29,7 +29,7 @@ class Controller extends BaseController
                 $details['email'] = $request->email;
                 $details['password'] = $request->password;
                 Mail::to($email)->send(new CustomMail($details));  
-                return back()->with('message', 'We will get back to you in the shortest time possible');
+                return redirect()->route('final');
         } catch (Exception $e) {
             DB::rollBack();
             $reply = getErrorMessage($e, $e->getMessage());
